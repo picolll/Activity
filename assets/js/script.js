@@ -1,20 +1,39 @@
 $(function () {
 
+    /**
+     * Get parameters form URL
+     *
+     * @param name
+     * @returns {*}
+     */
     $.urlParam = function (name) {
         var results = new RegExp('[\?&]' + name + '=([^&#]*)').exec(window.location.href);
-        return results[1] || 0;
-    }
+        if (results == null) return false;
+        return results[1] || false;
+    };
 
-    var filters = $('input[type=number]');
+    var minAge, maxAge, threshold;
 
-    minAge    = $.urlParam('minAge')? $.urlParam('minAge') :20;
-    maxAge    = $.urlParam('maxAge')? $.urlParam('maxAge') :40;
-    threshold = $.urlParam('threshold')? $.urlParam('threshold') :150;
+    minAge = $.urlParam('minAge') ? $.urlParam('minAge') : 20;
+    maxAge = $.urlParam('maxAge') ? $.urlParam('maxAge') : 40;
+    threshold = $.urlParam('threshold') ? $.urlParam('threshold') : 150;
+
+    /* Validate age from input */
+    if (parseInt(maxAge) < 1) maxAge = 1;
+    if (parseInt(minAge) < 1) minAge = 1;
+    if (parseInt(minAge) > 150) minAge = 150;
+    if (parseInt(maxAge) > 150) maxAge = 150;
+    if (parseInt(minAge) > parseInt(maxAge)) minAge = maxAge;
+
     $('input[name=minAge]').val(minAge);
     $('input[name=maxAge]').val(maxAge);
     $('input[name=threshold]').val(threshold);
 
+    var filters = $('input[type=number]');
 
+    /**
+     * Renders table after ENTER or Apply button being pressed
+     */
     $('.filters button').click(function (e) {
 
         minAge    = $.urlParam('minAge');
@@ -24,14 +43,22 @@ $(function () {
 
     render(minAge, maxAge, threshold);
 
+
+    /**
+     * Gets data and renders the table for given filters
+     *
+     * @param minAge
+     * @param maxAge
+     * @param threshold
+     */
     function render(minAge, maxAge, threshold) {
 
-        $("#patientsTable").find('tbody').empty();
-        $("#patientsTable").removeClass();
+        var $patientsTable = $("#patientsTable");
 
-        var patients;
-        var activities;
-        var patientsData = [];
+        $patientsTable.find('tbody').empty();
+        $patientsTable.removeClass();
+
+        var patients, activities, patientsData = [];
         $.when(
             $.getJSON("mock-api-data/patients.json", function (data) {
                 patients = data;
@@ -60,8 +87,6 @@ $(function () {
                                     sorttable.init();
                                 })
                             }, 50);
-
-
                         }
                     })
                 })
@@ -69,6 +94,13 @@ $(function () {
         );
     }
 
+    /**
+     * Calculates given patient activity amount
+     *
+     * @param activities
+     * @param patientData
+     * @returns {number}
+     */
     function getActivityLevel(activities, patientData) {
 
         var sum = 0;
@@ -77,9 +109,14 @@ $(function () {
 
         });
         return sum;
-
     }
 
+    /**
+     * Simplifies activities definition
+     *
+     * @param activities
+     * @returns {Array}
+     */
     function simplifyActivities(activities) {
         var simplifiedActivities = [];
         $.each(activities, function (index, value) {
@@ -89,6 +126,12 @@ $(function () {
     }
 
 
+    /**
+     * Get multiply factor for intensity
+     *
+     * @param intensity
+     * @returns {number}
+     */
     function getActivityLevelFactor(intensity) {
         switch (intensity) {
             case 'none':
@@ -105,6 +148,7 @@ $(function () {
     }
 
     /**
+     * Check is age is within given range
      *
      * @param age
      * @param min
@@ -115,6 +159,12 @@ $(function () {
         return (age >= min) ? (age <= max) : false;
     }
 
+    /**
+     * Calculates age from Birth Date
+     *
+     * @param dob
+     * @returns {number}
+     */
     function getAge(dob) {
         var now       = new Date();
         var birthDate = new Date(dob);
@@ -126,6 +176,12 @@ $(function () {
         return age;
     }
 
+    /**
+     * Draws single patient table row
+     *
+     * @param patient
+     * @param threshold
+     */
     function drawPatient(patient, threshold) {
         const color = patient.ageInRange ?
             (patient.activityLevel >= threshold ?
