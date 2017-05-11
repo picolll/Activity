@@ -1,0 +1,14 @@
+[
+  {
+    "activity": "sleeping",
+    "minutes": 570
+  },
+  {
+    "activity": "walking",
+    "minutes": 145
+  },
+  {
+    "activity": "stationary-awake",
+    "minutes": 725
+  }
+]

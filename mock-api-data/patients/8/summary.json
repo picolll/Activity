@@ -1,0 +1,10 @@
+[
+  {
+    "activity": "sleeping",
+    "minutes": 1000
+  },
+  {
+    "activity": "stationary-awake",
+    "minutes": 440
+  }
+]

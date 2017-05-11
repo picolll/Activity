@@ -1,0 +1,110 @@
+[
+  {
+    "id": 1,
+    "name": "Gregor van Vloten",
+    "gender": "male",
+    "birthDate": "1986-05-09",
+    "heightCm": 193,
+    "weightKg": 69.6,
+    "bmi": 18.6
+  },
+  {
+    "id": 2,
+    "name": "Susanne Marcil",
+    "gender": "female",
+    "birthDate": "1984-11-18",
+    "heightCm": 159,
+    "weightKg": 102.8,
+    "bmi": 40.6
+  },
+  {
+    "id": 3,
+    "name": "Söröss Madarász",
+    "gender": "female",
+    "birthDate": "1979-07-28",
+    "heightCm": 156,
+    "weightKg": 47.5,
+    "bmi": 19.5
+  },
+  {
+    "id": 4,
+    "name": "Martin Eriksen",
+    "gender": "male",
+    "birthDate": "1978-11-09",
+    "heightCm": 182,
+    "weightKg": 163.5,
+    "bmi": 49.3
+  },
+  {
+    "id": 5,
+    "name": "Jennifer Dixon",
+    "gender": "female",
+    "birthDate": "1987-12-13",
+    "heightCm": 159,
+    "weightKg": 64,
+    "bmi": 25.3
+  },
+  {
+    "id": 6,
+    "name": "Matthew Thornton",
+    "gender": "male",
+    "birthDate": "1988-06-17",
+    "heightCm": 177,
+    "weightKg": 83.3,
+    "bmi": 26.5
+  },
+  {
+    "id": 7,
+    "name": "Tom Brady",
+    "gender": "male",
+    "birthDate": "1992-03-22",
+    "heightCm": 179,
+    "weightKg": 85.2,
+    "bmi": 26.5
+  },
+  {
+    "id": 8,
+    "name": "Harrison Abbott",
+    "gender": "male",
+    "birthDate": "1993-10-27",
+    "heightCm": 172,
+    "weightKg": 80,
+    "bmi": 27
+  },
+  {
+    "id": 9,
+    "name": "Mollie Jordan",
+    "gender": "female",
+    "birthDate": "1980-02-15",
+    "heightCm": 175,
+    "weightKg": 61.2,
+    "bmi": 19.9
+  },
+  {
+    "id": 10,
+    "name": "Toby Simpson",
+    "gender": "male",
+    "birthDate": "1988-01-08",
+    "heightCm": 168,
+    "weightKg": 62,
+    "bmi": 21.9
+  },
+  {
+    "id": 11,
+    "name": "Katherine Wyatt",
+    "gender": "female",
+    "birthDate": "1976-08-02",
+    "heightCm": 169,
+    "weightKg": 56.3,
+    "bmi": 19.7
+  },
+  {
+    "id": 12,
+    "name": "Shannon Foster",
+    "gender": "female",
+    "birthDate": "1986-08-21",
+    "heightCm": 171,
+    "weightKg": 62.4,
+    "bmi": 21.3
+  }
+]
